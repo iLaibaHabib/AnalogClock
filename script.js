@@ -9,7 +9,7 @@ setInterval(()=>{
     let mn = document.getElementById("mn");
     let sc = document.getElementById("sc");
 
-    let h = new Date().getHours();
+    let h = new Date().getHours() % 12;
     let m = new Date().getMinutes();
     let s = new Date().getSeconds();
 
@@ -24,10 +24,10 @@ setInterval(()=>{
     // 360 / 60seconds = 6
     min_dot.style.transform = `rotateZ(${m * 6}deg)`;
     //360 / 60minutes = 6
-    hr_dot.style.transform = `rotateZ(${h * 30}deg)`;
-    //360 / 12hrs = 30
+    hr_dot.style.transform = `rotateZ(${(h % 12) * 30}deg)`;
+  // 360 / 12 hrs = 30, but we use (h % 12) to handle the case when h > 12
 
-    hr.style.transform = `rotateZ(${h * 30}deg)`;
+    hr.style.transform = `rotateZ(${(h % 12) * 30}deg)`;
     mn.style.transform = `rotateZ(${m * 6}deg)`;
     sc.style.transform = `rotateZ(${s * 6}deg)`;
-    })
+    });
